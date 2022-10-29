@@ -2,12 +2,12 @@
 % Please edit documentation in R/plotImportance.R
 \name{plotImportance}
 \alias{plotImportance}
-\title{Plot importance ranks of best performing features from a spFSR object}
+\title{Ploting importance ranks of best performing features from a spFSR object}
 \usage{
 plotImportance(x, low = "darkblue", high = "black")
 }
 \arguments{
-\item{x}{an \code{spFSR} object}
+\item{x}{a \code{spFSR} object}
 
 \item{low}{Color for the lowest importance. The default is darkblue.}
 
@@ -17,12 +17,8 @@ plotImportance(x, low = "darkblue", high = "black")
 a \code{ggplot} object: a vertical bar chart of features and feature importance.
 }
 \description{
-Return a vertical bar chart of features vs. feature importance.
-See \link[spFSR]{spFeatureSelection} for a more detailed example.
+A vertical bar chart of features vs. feature importance. See \link[spFSR]{spFeatureSelection} for example.
 }
 \seealso{
 \link[spFSR]{plotImportance}, \link[spFSR]{spFSR.default}, and \link[spFSR]{spFeatureSelection}.
-}
-\author{
-Yong Kai Wong \email{yongkai1017@gmail.com}
 }

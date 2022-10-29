@@ -2,7 +2,7 @@
 % Please edit documentation in R/getImportance.R
 \name{getImportance}
 \alias{getImportance}
-\title{Extract feature importance data from a spFSR object}
+\title{Extracting feature importance data from a spFSR object}
 \usage{
 getImportance(x)
 }
@@ -13,12 +13,8 @@ getImportance(x)
 A \code{data.frame} of features and feature importance
 }
 \description{
-Returns importance ranks of best performing features.
-See \link[spFSR]{spFeatureSelection} for a more detailed example.
+This returns importance ranks of best performing features. See \link[spFSR]{spFeatureSelection} for example.
 }
 \seealso{
 \link[spFSR]{plotImportance} and \link[spFSR]{spFeatureSelection}.
-}
-\author{
-Yong Kai Wong \email{yongkai1017@gmail.com}
 }

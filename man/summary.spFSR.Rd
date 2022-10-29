@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.spFSR.R
 \name{summary.spFSR}
 \alias{summary.spFSR}
-\title{Summarising an spFSR object}
+\title{Summarising a spFSR object}
 \usage{
 \method{summary}{spFSR}(object, ...)
 }
@@ -12,14 +12,11 @@
 \item{...}{Additional arguments}
 }
 \value{
-Summary of an spFSR object consisting of number of features selected, wrapper type, total number of iterations, the best performing features, and the descriptive statistics of the best iteration result (the iteration where the best performing features are found).
+Summary of a spFSR object consisting of number of features selected, wrapper type, total number of iterations, the best performing features, and the descriptive statistics of the best iteration result (the iteration where the best performing features are found).
 }
 \description{
-Summarising an spFSR object
+Summarising a spFSR object
 }
 \seealso{
 \link[spFSR]{getImportance}, \link[spFSR]{spFSR.default}, and \link[spFSR]{spFeatureSelection}.
-}
-\author{
-Yong Kai Wong \email{yongkai1017@gmail.com}
 }

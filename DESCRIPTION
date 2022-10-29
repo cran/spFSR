@@ -1,38 +1,35 @@
 Package: spFSR
 Type: Package
-Title: Feature Selection and Ranking by Simultaneous Perturbation
+Title: Feature Selection and Ranking via Simultaneous Perturbation
         Stochastic Approximation
-Version: 1.0.0
-Date: 2018-05-10
+Version: 2.0.1
+Date: 2022-10-28
 Authors@R: c(
-  person("Vural", "Aksakalli", email = "vaksakalli@gmail.com", role = c("aut", "cre")),
+  person("David", "Akman", email = "david.v.akman@gmail.com", role = c("aut", "cre")),
   person("Babak", "Abbasi", email = "babak.abbasi@rmit.edu.au", role = c("aut", "ctb")),
   person("Yong Kai", "Wong", email = "yongkai1017@gmail.com", role = c("aut", "ctb")),
+  person("Guo Feng Anders", "Yeo", email = "anders@yeo.id.au", role = c("aut", "ctb")),
   person("Zeren", "D. Yenice", email = "zerendyenice@gmail.com", role = "ctb"))  
-Description: An implementation of feature selection and ranking via simultaneous perturbation
-    stochastic approximation (SPSA-FSR) based on works by V. Aksakalli and M. Malekipirbazari 
-    (2015) <arXiv:1508.07630> and Zeren D. Yenice and et al. (2018) <arXiv:1804.05589>.
-    The SPSA-FSR algorithm searches for a locally optimal set of features that yield the best 
-    predictive performance using a specified error measure such as mean squared error (for 
-    regression problems) and accuracy rate (for classification problems). This package requires 
-    an object of class 'task' and an object of class 'Learner' from the 'mlr' package.
+Description: An implementation of feature selection, weighting and ranking via simultaneous perturbation
+    stochastic approximation (SPSA). The SPSA-FSR algorithm searches for a locally optimal set of
+    features that yield the best predictive performance using some error measures such as mean 
+    squared error (for regression problems) and accuracy rate (for classification problems).
 License: GPL-3
 Encoding: UTF-8
-Depends: mlr (>= 2.11), parallelMap (>= 1.3), parallel (>= 3.4.2),
-        tictoc (>= 1.0)
-Imports: ggplot2 (>= 2.2.1), class (>= 7.3), mlbench (>= 2.1)
-Suggests: caret (>= 6.0), MASS (>= 7.3), knitr, rmarkdown
-URL: https://www.featureranking.com/, https://arxiv.org/abs/1804.05589
+Depends: mlr3 (>= 0.14.0), future (>= 1.28.0), tictoc (>= 1.0)
+Imports: mlr3pipelines (>= 0.4.2), mlr3learners (>= 0.5.4), parallel
+        (>= 3.4.2), ggplot2 (>= 2.2.1), lgr (>= 0.4.4)
+Suggests: caret (>= 6.0), MASS (>= 7.3)
+URL: https://www.featureranking.com/
 BugReports: https://github.com/yongkai17/spFSR/issues
-LazyData: true
-RoxygenNote: 6.0.1
-VignetteBuilder: knitr
+RoxygenNote: 7.2.1
 NeedsCompilation: no
-Packaged: 2018-05-11 11:12:43 UTC; yongkai
-Author: Vural Aksakalli [aut, cre],
+Packaged: 2022-10-28 12:55:10 UTC; anders
+Author: David Akman [aut, cre],
   Babak Abbasi [aut, ctb],
   Yong Kai Wong [aut, ctb],
+  Guo Feng Anders Yeo [aut, ctb],
   Zeren D. Yenice [ctb]
-Maintainer: Vural Aksakalli <vaksakalli@gmail.com>
+Maintainer: David Akman <david.v.akman@gmail.com>
 Repository: CRAN
-Date/Publication: 2018-05-11 13:15:16 UTC
+Date/Publication: 2022-10-29 06:22:34 UTC

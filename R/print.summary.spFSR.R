@@ -1,6 +1,6 @@
 print.summary.spFSR <- function(x, ...){
 
-  cat( '\nSummary of SPSA-FSR for feature selection')
+  cat( '\nSummary of SPSA for feature selection')
   cat( '\nTarget variable:', x$target )
   cat( '\nNumber of features: ', x$nfeatures, '\n')
   cat( '\nWrapper: ', x$name )

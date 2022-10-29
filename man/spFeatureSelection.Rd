@@ -2,31 +2,26 @@
 % Please edit documentation in R/spFeatureSelection.R
 \name{spFeatureSelection}
 \alias{spFeatureSelection}
-\title{Feature selection and ranking by SPSA-FSR}
+\title{SPSA-FSR for Feature Selection and Ranking}
 \usage{
-spFeatureSelection(task, wrapper, measure, norm.method = "standardize",
-  num.features.selected, ...)
+spFeatureSelection(task, wrapper = NULL, scoring = NULL, ...)
 }
 \arguments{
-\item{task}{A \code{task} object created using \pkg{mlr} package. It must be either a \code{ClassifTask} or \code{RegrTask} object.}
+\item{task}{A \code{task} object created using \pkg{mlr3} package. It must be either a \code{ClassifTask} or \code{RegrTask} object.}
 
-\item{wrapper}{A \code{Learner} object created using \pkg{mlr} package. Multiple learners object is not supported.}
+\item{wrapper}{A \code{Learner} object created using \pkg{mlr3} package. Multiple learners object is not supported.}
 
-\item{measure}{A performance measure supported by the \code{task}.}
-
-\item{norm.method}{Normalization method for features. NULL value is allowed. Supported methods are 'standardize', 'range', 'center', and 'scale'. Default value is 'standardize'.}
-
-\item{num.features.selected}{Number of features to be selected. Must be between zero and total number of features in the task. A value of zero results in automatic feature selection.}
+\item{scoring}{A performance measure within the \pkg{mlr3} package supported by the \code{task}.}
 
 \item{...}{Additional arguments. For more details, see \link[spFSR]{spFSR.default}.}
 }
 \value{
 \code{spFSR} returns an object of class "spFSR". An object of class "spFSR" consists of the following:
 
-\item{task.spfs}{An \pkg{mlr} package \code{task} object defined on the best performing features.}
-\item{wrapper}{An \pkg{mlr} package \code{learner} object as specified by the user.}
-\item{measure}{An \pkg{mlr} package performance measure as specified by the user.}
-\item{param best.model}{An \pkg{mlr} package \code{WrappedModel} object trained by the \code{wrapper} using \code{task.spfs}.}
+\item{task.spfs}{An \pkg{mlr3} package \code{tsk} object defined on the best performing features.}
+\item{wrapper}{An \pkg{mlr3} package \code{lrn} object, default is random forest.}
+\item{scoring}{An \pkg{mlr3} package \code{msr} object as specified by the user.}
+\item{param best.model}{An \pkg{mlr3} package \code{model} object trained by the \code{wrapper} using \code{task.spfs}.}
 \item{iter.results}{A \code{data.frame} object containing detailed information on each iteration.}
 \item{features}{Names of the best performing features.}
 \item{num.features}{The number of best performing features.}
@@ -36,79 +31,63 @@ spFeatureSelection(task, wrapper, measure, norm.method = "standardize",
 \item{best.value}{The best measure value encountered during execution.}
 \item{best.std}{The standard deviation corresponding to the best measure value encountered.}
 \item{run.time}{Total run time in minutes}
-\item{rdesc.feat.eval}{Resampling specification}
+\item{results}{Dataframe with boolean of selected features, names and measure}
 \item{call}{Call}
 }
 \description{
-Searches for the best performing set of features,
-either automatically or for a given number of features, and ranks them by their
-importance via the simultaneous perturbation stochastic approximation (SPSA) algorithm for
-given a task, wrapper, and performance criterion. The task, the wrapper, and
-the performance criterion are defined using the \pkg{mlr} package.
+This function searches for the best performing features and rank the feature importance by implementing simultaneous perturbation stochastic approximation (SPSA) algorithm given a task and a wrapper. The task and wrapper are defined using the \pkg{mlr3} package.
 }
 \examples{
-\donttest{
-data(iris)         # load the data
-library(mlr)       # load the mlr package
 
-if( requireNamespace('class', quietly = TRUE) ){
+library(mlr3)          # load the mlr3 package
+library(mlr3learners) # load the mlr3learners package
 
-  # Load class so that a knn classifier can be defined
-  library('class')
+task    <- tsk('iris') # define task
+wrapper <- lrn('classif.rpart')                # define wrapper
+measure <- msr('classif.acc')
 
-  # define classification task on 20 random samples
-  task    <- makeClassifTask(data = iris[sample(150, 20),],
-                             target = 'Species')
-
-  # define a wrapper (1-KNN classifier)
-  wrapper <- makeLearner('classif.knn', k = 1)
-
-
-  # run spsa with 2 iterations
-  # to select 1 out of 4 features
-  spsaMod <- spFeatureSelection( task = task,
-                                 wrapper = wrapper,
-                                 measure = mmce,
-                                 num.features.selected = 1,
-                                 num.cores = 1,
-                                 iters.max = 2)
-
-  # obtain summary
-  summary(spsaMod)
+# run spsa
+spsaMod <- spFeatureSelection( task = task,
+                               wrapper = wrapper,
+                               scoring = measure,
+                               num.features.selected = 3,
+                               n.jobs = 1,
+                               iters.max = 2,
+                               num.grad.avg = 1)
 
 
-  # plot with error bars
-  plot(spsaMod, errorBar = TRUE)
+# obtain summary
+summary(spsaMod)
 
-  # obtain the wrapped model with the best performing features
-  bestMod <- getBestModel(spsaMod)
+# plot spsaMod
+plot(spsaMod)                                # simplest plot
+plot(spsaMod, errorBar = TRUE)               # plot with error bars
+plot(spsaMod, errorBar = TRUE, se = TRUE)    # plot with error bars based on se
+plot(spsaMod, errorBar = TRUE, annotateBest = TRUE)  # annotate best value
+plot(spsaMod, errorBar = TRUE, ylab = 'Acc measure', type = 'o')
 
-  # predict using the best mod
-  pred    <- predict(bestMod, task = spsaMod$task.spfs )
+# obtain the wrapped model with the best performing features
+bestMod <- getBestModel(spsaMod)
 
-  # Obtain confusion matrix
-  calculateConfusionMatrix( pred )
+# predict using the best mod
+pred <- bestMod$predict( task = spsaMod$task.spfs )
 
-  # Get the importance ranks of best performing features
-  getImportance(spsaMod)
-  plotImportance(spsaMod)
+# Obtain confusion matrix
+pred$confusion
 
-  }
+# Get the importance ranks of best performing features
+getImportance(spsaMod)
+plotImportance(spsaMod)
 
-}
+
 
 
 }
 \references{
-V. Aksakalli and M. Malekipirbazari (2015) Feature Selection via Binary Simultaneous Perturbation Stochastic Approximation,  \emph{Pattern Recognition Letters}, \bold{Vol. 75}, 41 -- 47. See \url{https://doi.org/10.1016/j.patrec.2016.03.002}
+David V. Akman et al. (2022) k-best feature selection and ranking via stochastic approximation,  \emph{Expert Systems with Applications}, \bold{Vol. 213}. See \doi{10.1016/j.eswa.2022.118864}
+
+G.F.A Yeo and V. Aksakalli (2021) A stochastic approximation approach to simultaneous feature weighting and selection for nearest neighbour learners,  \emph{Expert Systems with Applications}, \bold{Vol. 185}. See \doi{10.1016/j.eswa.2021.115671}
 }
 \seealso{
-\link[mlr]{makeClassifTask}, \link[mlr]{makeRegrTask}, \link[mlr]{makeLearner} and \link[spFSR]{spFSR.default}.
-}
-\author{
-Vural Aksakalli \email{vaksakalli@gmail.com}
-
-Babak Abbasi \email{babak.abbasi@rmit.edu.au}, \email{b.abbasi@gmail.com}
-
-Yong Kai Wong \email{yongkai1017@gmail.com}
+\link[mlr3]{tsk}, \link[mlr3]{lrn}, \link[mlr3]{msr} and \link[spFSR]{spFSR.default}.
 }
