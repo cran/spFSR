@@ -1,5 +1,5 @@
-ef1e27e966216539428560b55c75d278 *DESCRIPTION
-c9580fad79a78ed8d91ea4d4b0f73ce1 *NAMESPACE
+86b497fc89b9f576c226ea9d897707bb *DESCRIPTION
+3acb068065ba27dad820e7c9e6dfee82 *NAMESPACE
 b2c09b2f99d2accddc761a083e0877bd *R/getBestModel.R
 384eb57c1d01e22a72514bd5296ec655 *R/getImportance.R
 15d624a3ca549856cd089520188dc1f0 *R/plot.spFSR.R
@@ -7,9 +7,9 @@ fe82792dfcb0bab9fc36856304d3aecb *R/plotImportance.R
 868b615e1d603b162ea50f8c3fa9d69c *R/print.spFSR.R
 7e9a3115401f4e9fd9124bff1732c479 *R/print.summary.spFSR.R
 a70eb8679c4f53a4953c3508eee2d8a4 *R/spFSR.R
-de55bf2f7e669d56501db1ca2661dc80 *R/spFSR.default.R
+bd089d8c196e329be57e3ad1ce48acec *R/spFSR.default.R
 293a137fedb7f39f5627516ae9d11521 *R/spFeatureSelection.R
-bc6fb1f8d8f826a38ff4f010490919c6 *R/spsaKernel.R
+f2f76019b76b1f84f116bf6ba0b181c1 *R/spsaKernel.R
 99c11aaad686175e7e03b588502b0cb1 *R/summary.spFSR.R
 afbe4209b3bb961ba3e41cbfe79ea507 *build/partial.rdb
 51f220531e5a8a8c7e79f06316f0aaf3 *man/getBestModel.Rd

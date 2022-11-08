@@ -225,15 +225,15 @@ spsaKernel <- function(
       if (length(task$class_names) ==2){
         task2$positive = task$positive
       }
-
-      task2$add_strata(gsub("..stratum_", "", task$col_roles$stratum))
-      task2$man = task$man
     }
     else if (task$task_type == "regr"){
       task2 = as_task_regr(id=task$id, x=data_new, target=task$target_names, label=task$label, extra_args=task$extra_args, weights = task$weights)
-      task2$add_strata(gsub("..stratum_", "", task$col_roles$stratum))
-      task2$man = task$man
     }
+
+    if (!is.null(task$strata)){
+      task2$add_strata(gsub("..stratum_", "", task$col_roles$stratum))
+    }
+    task2$man = task$man
 
     return(task2)
   }
@@ -438,8 +438,9 @@ spsaKernel <- function(
     if (!is.null(imp.algo.start)){
       curr.imp = imp.algo.start
       if (show.info){
-        print(paste0("Starting importance range: (",min(curr.imp),",",max(curr.imp),")"))
-
+        if (is.debug){
+          print(paste0("Starting importance range: (",min(curr.imp),",",max(curr.imp),")"))
+        }
       }
     }
     else{
@@ -730,7 +731,7 @@ spsaKernel <- function(
   best.features.importance <- round(sort(best.imps, decreasing = TRUE), 5)
 
   ## in this task, features order will be the same as in the original task
-  task.spfs <- changeData(task=task, cbind(subset(task$data(), select = setdiff(colnames(task$data()), task$target_names)[-best.features]), subset(task$data(), select = task$target_names)))
+  task.spfs <- changeData(task=task, cbind(subset(task$data(), select = setdiff(colnames(task$data()), task$target_names)[best.features]), subset(task$data(), select = task$target_names)))
 
   best.model <- wrapper$train(task = task.spfs)
 

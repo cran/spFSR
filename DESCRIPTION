@@ -2,7 +2,7 @@ Package: spFSR
 Type: Package
 Title: Feature Selection and Ranking via Simultaneous Perturbation
         Stochastic Approximation
-Version: 2.0.1
+Version: 2.0.2
 Date: 2022-10-28
 Authors@R: c(
   person("David", "Akman", email = "david.v.akman@gmail.com", role = c("aut", "cre")),
@@ -17,14 +17,15 @@ Description: An implementation of feature selection, weighting and ranking via s
 License: GPL-3
 Encoding: UTF-8
 Depends: mlr3 (>= 0.14.0), future (>= 1.28.0), tictoc (>= 1.0)
-Imports: mlr3pipelines (>= 0.4.2), mlr3learners (>= 0.5.4), parallel
-        (>= 3.4.2), ggplot2 (>= 2.2.1), lgr (>= 0.4.4)
+Imports: mlr3pipelines (>= 0.4.2), mlr3learners (>= 0.5.4), ranger (>=
+        0.14.1), parallel (>= 3.4.2), ggplot2 (>= 2.2.1), lgr (>=
+        0.4.4)
 Suggests: caret (>= 6.0), MASS (>= 7.3)
 URL: https://www.featureranking.com/
 BugReports: https://github.com/yongkai17/spFSR/issues
 RoxygenNote: 7.2.1
 NeedsCompilation: no
-Packaged: 2022-10-28 12:55:10 UTC; anders
+Packaged: 2022-11-07 22:58:25 UTC; anders
 Author: David Akman [aut, cre],
   Babak Abbasi [aut, ctb],
   Yong Kai Wong [aut, ctb],
@@ -32,4 +33,4 @@ Author: David Akman [aut, cre],
   Zeren D. Yenice [ctb]
 Maintainer: David Akman <david.v.akman@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-10-29 06:22:34 UTC
+Date/Publication: 2022-11-08 04:50:02 UTC

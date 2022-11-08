@@ -68,6 +68,8 @@
 #' @import parallel
 #' @import tictoc
 #' @import mlr3
+#' @import mlr3learners
+#' @import ranger
 #'
 #'
 #' @export
