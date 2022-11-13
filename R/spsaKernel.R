@@ -338,6 +338,7 @@ spsaKernel <- function(
     x <- cbind(x, subset(task$data(), select = task$target_names))
 
     task <- changeData(task = task, x)
+    names(hot.ft.imp.selected) = NULL
 
 
     if (hot.start.range >0.0){
@@ -395,7 +396,7 @@ spsaKernel <- function(
       task <- changeData(task = task, weighted_feature_values)
     }
 
-    task.fs <- changeData(task=task, data = cbind(subset(task$data(), select = setdiff(colnames(task$data()), task$target_names)[-selected.features]), subset(task$data(), select = task$target_names)))
+    task.fs <- changeData(task=task, data = cbind(subset(task$data(), select = setdiff(colnames(task$data()), task$target_names)[selected.features]), subset(task$data(), select = task$target_names)))
 
     if (perf.eval.method == "cv") {
 

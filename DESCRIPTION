@@ -2,7 +2,7 @@ Package: spFSR
 Type: Package
 Title: Feature Selection and Ranking via Simultaneous Perturbation
         Stochastic Approximation
-Version: 2.0.2
+Version: 2.0.3
 Date: 2022-10-28
 Authors@R: c(
   person("David", "Akman", email = "david.v.akman@gmail.com", role = c("aut", "cre")),
@@ -25,7 +25,7 @@ URL: https://www.featureranking.com/
 BugReports: https://github.com/yongkai17/spFSR/issues
 RoxygenNote: 7.2.1
 NeedsCompilation: no
-Packaged: 2022-11-07 22:58:25 UTC; anders
+Packaged: 2022-11-09 00:53:32 UTC; anders
 Author: David Akman [aut, cre],
   Babak Abbasi [aut, ctb],
   Yong Kai Wong [aut, ctb],
@@ -33,4 +33,4 @@ Author: David Akman [aut, cre],
   Zeren D. Yenice [ctb]
 Maintainer: David Akman <david.v.akman@gmail.com>
 Repository: CRAN
-Date/Publication: 2022-11-08 04:50:02 UTC
+Date/Publication: 2022-11-13 09:30:02 UTC
