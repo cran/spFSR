@@ -4,7 +4,7 @@
 \alias{spFSR.default}
 \title{Default Function of SP-FSR for Feature Selection and Ranking}
 \usage{
-\method{spFSR}{default}(
+spFSR.default(
   task,
   wrapper = NULL,
   scoring = NULL,

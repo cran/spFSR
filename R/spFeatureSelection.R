@@ -8,7 +8,6 @@
 #' @param ... Additional arguments. For more details, see \link[spFSR]{spFSR.default}.
 #'
 #' @examples
-#'
 #' library(mlr3)          # load the mlr3 package
 #' library(mlr3learners) # load the mlr3learners package
 #'
@@ -48,8 +47,6 @@
 #' # Get the importance ranks of best performing features
 #' getImportance(spsaMod)
 #' plotImportance(spsaMod)
-#'
-#'
 #'
 #'
 #' @return \code{spFSR} returns an object of class "spFSR". An object of class "spFSR" consists of the following:

@@ -38,7 +38,6 @@ spFeatureSelection(task, wrapper = NULL, scoring = NULL, ...)
 This function searches for the best performing features and rank the feature importance by implementing simultaneous perturbation stochastic approximation (SPSA) algorithm given a task and a wrapper. The task and wrapper are defined using the \pkg{mlr3} package.
 }
 \examples{
-
 library(mlr3)          # load the mlr3 package
 library(mlr3learners) # load the mlr3learners package
 
@@ -78,8 +77,6 @@ pred$confusion
 # Get the importance ranks of best performing features
 getImportance(spsaMod)
 plotImportance(spsaMod)
-
-
 
 
 }

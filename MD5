@@ -1,14 +1,13 @@
-5234c9138379b6c5246119c63a561984 *DESCRIPTION
-3acb068065ba27dad820e7c9e6dfee82 *NAMESPACE
+b03f5d4a33211141fb7f7b2f60ed2e72 *DESCRIPTION
+5152a781498a93850559e70869eb6ac3 *NAMESPACE
 b2c09b2f99d2accddc761a083e0877bd *R/getBestModel.R
 384eb57c1d01e22a72514bd5296ec655 *R/getImportance.R
 15d624a3ca549856cd089520188dc1f0 *R/plot.spFSR.R
 fe82792dfcb0bab9fc36856304d3aecb *R/plotImportance.R
 868b615e1d603b162ea50f8c3fa9d69c *R/print.spFSR.R
 7e9a3115401f4e9fd9124bff1732c479 *R/print.summary.spFSR.R
-a70eb8679c4f53a4953c3508eee2d8a4 *R/spFSR.R
 bd089d8c196e329be57e3ad1ce48acec *R/spFSR.default.R
-293a137fedb7f39f5627516ae9d11521 *R/spFeatureSelection.R
+696580cf4edf8919141ec15fdac728c9 *R/spFeatureSelection.R
 3a4f400c67e95cb30c9007d73f86c9a4 *R/spsaKernel.R
 99c11aaad686175e7e03b588502b0cb1 *R/summary.spFSR.R
 afbe4209b3bb961ba3e41cbfe79ea507 *build/partial.rdb
@@ -16,6 +15,6 @@ afbe4209b3bb961ba3e41cbfe79ea507 *build/partial.rdb
 e22d429f699e9faf924317ef09e4f2bb *man/getImportance.Rd
 77b9535ef0f2de17697130caada473f7 *man/plot.spFSR.Rd
 5c8f20090b403c8b422a7632e4bc16fc *man/plotImportance.Rd
-95b98d729e61ac16f41d9abd73221f88 *man/spFSR.default.Rd
-f24f060a6a79267a57000791562bd1d0 *man/spFeatureSelection.Rd
+e2ad6ee2ee1401df99ba6d75a878dbb0 *man/spFSR.default.Rd
+35b1cf45569960e4cb922c69e3278577 *man/spFeatureSelection.Rd
 a2681a269d2e55390ce88d570d47f48c *man/summary.spFSR.Rd
